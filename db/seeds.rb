@@ -9,6 +9,7 @@ user2 = User.create!(email: 'isaiah@gmail.com', password: '123456', first_name: 
 user3 = User.create!(email: 'zena@gmail.com', password: '123456', first_name: 'Zena', last_name: 'El Kurdi')
 user4 = User.create!(email: 'pierre@gmail.com', password: '123456', first_name: 'Pierre', last_name: 'Urban')
 user5 = User.create!(email: 'clothilde@gmail.com', password: '123456', first_name: 'Clothilde', last_name: 'Scache')
+default_user = User.create!(email: 'defaultuser@gmail.com', password: '123456', first_name: 'Default', last_name: 'User')
 
 user1.photo.attach(
   io: File.open("public/images/julia.png"),
@@ -39,6 +40,13 @@ user5.photo.attach(
   filename: "clothilde.png", # use the extension of the attached file here
   content_type: 'image/jpg' # use the mime type of the attached file here
 )
+
+default_user.photo.attach(
+  io: File.open("public/images/clothilde.png"),
+  filename: "clothilde.png", # use the extension of the attached file here
+  content_type: 'image/jpg' # use the mime type of the attached file here
+)
+
 
 # CATEGORIES = ["Entrée", "Plat principal", "Accompagnement", "Dessert", "Apéritif", "Boisson", "Sauce", "Végétarien", "Vegan", "Sans gluten", "Sans lactose", "Français", "Italien", "Chinois", "Africain", "Indien", "Coréen", "Libanais", "Thaï", "Japonais", "Mexicain", "Espagnol", "Thaïlandais", "Américain", "Méditerranéen", "Turc"]
 

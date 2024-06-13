@@ -3,6 +3,8 @@ require "open-uri"
 
 class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[show edit update destroy favorite duplicate edit_note update_note]
+  skip_before_action :authenticate_user!, only: [:my_recipes]
+  before_action :auto_login_demo_user, only: %i[my_recipes]
 
   def my_recipes
       @favorite_recipes = current_user.favorited_by_type('Recipe')
@@ -161,5 +163,12 @@ class RecipesController < ApplicationController
 
   def set_recipe
     @recipe = Recipe.find(params[:id])
+  end
+
+  def auto_login_demo_user
+    return if user_signed_in?
+
+    user = User.find_by(email: 'pierre@gmail.com')
+    sign_in(user) if user
   end
 end
